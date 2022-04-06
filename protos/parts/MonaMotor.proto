@@ -1,0 +1,39 @@
+#VRML_SIM R2021a utf8
+# license: Copyright Cyberbotics Ltd. Licensed for use only with Webots.
+# license url: https://cyberbotics.com/webots_assets_license
+# Motor of the mona esp mobile robot.
+
+PROTO MonaMotor [
+  field SFVec3f    position             0.04 -0.008 0.018
+  field SFVec3f    axis                 1 0 0
+  field SFRotation whellRotation        0 1 0 0
+  field SFString   positionSensorName   "pos_sensor_R"
+  field SFString   rotationalMotorName  "wheel_R"
+  field SFString   contactMaterial      "caoutchouc"
+  field SFFloat    translationStep      0.001
+  field SFFloat    rotationStep         0.1
+]
+{
+  HingeJoint {
+    jointParameters HingeJointParameters {
+      anchor IS position
+      axis IS axis
+    }
+    device [
+      PositionSensor {
+        name IS positionSensorName
+      }
+      RotationalMotor {
+        name IS rotationalMotorName
+      }
+    ]
+    endPoint MonaWheel {
+      name IS rotationalMotorName
+      translation IS position
+      rotation IS whellRotation
+      contactMaterial IS contactMaterial
+      translationStep IS translationStep
+      rotationStep IS rotationStep
+    }
+  }     
+}

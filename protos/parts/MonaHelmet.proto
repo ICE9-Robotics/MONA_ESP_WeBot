@@ -1,0 +1,38 @@
+#VRML_SIM R2021a utf8
+# license: Copyright Cyberbotics Ltd. Licensed for use only with Webots.
+# license url: https://cyberbotics.com/webots_assets_license
+# Helmet of the mona esp mobile robot.
+
+PROTO MonaHelmet [
+  field SFVec3f    translation      0 0 0
+  field SFRotation rotation         0 1 0 0
+  field SFString   name             "Helmet"
+  field SFString   contactMaterial  "plastic"
+]
+{
+  Solid {
+    translation IS translation
+    rotation IS rotation
+    children [
+      DEF Helmet Shape {
+        appearance PBRAppearance {
+          baseColor 0.9 0.9 0.9
+          roughness 1
+          metalness 0
+        }
+        geometry Mesh {
+          url [
+            "../protos/mona-robot/cad/Helmet.stl"
+          ]
+        }
+      }
+    ]
+    name IS name
+    model "mona esp Helmet"
+    contactMaterial IS contactMaterial
+    boundingObject USE Helmet
+    physics Physics {
+      mass 1
+    }
+  }
+}

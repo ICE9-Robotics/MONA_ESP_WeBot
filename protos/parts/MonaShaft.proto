@@ -1,0 +1,31 @@
+#VRML_SIM R2021a utf8
+# license: Copyright Cyberbotics Ltd. Licensed for use only with Webots.
+# license url: https://cyberbotics.com/webots_assets_license
+# Shaft of the mona esp mobile robot.
+
+PROTO MonaShaft [
+  field SFVec3f    translation  0 0 0
+  field SFRotation rotation     0 1 0 0
+  field SFFloat    shaftLength  0.078
+  field SFFloat    shaftRadius  0.0012
+  field SFString   name         "Shaft"
+]
+{
+  Solid {
+    translation IS translation
+    rotation IS rotation
+    children [
+      Shape {
+        appearance PBRAppearance {
+          baseColor 1 0.7333333333333333 0.058823529411764705
+        }
+        geometry Cylinder {
+          height IS shaftLength
+          radius IS shaftRadius
+        }
+      }
+    ]
+    name IS name
+    model "mona esp Shaft"
+  }
+}

@@ -1,0 +1,33 @@
+#VRML_SIM R2021a utf8
+# license: Copyright Cyberbotics Ltd. Licensed for use only with Webots.
+# license url: https://cyberbotics.com/webots_assets_license
+# Marble of the mona esp mobile robot.
+
+PROTO MonaMarble [
+  field SFVec3f    translation  0 0 0
+  field SFRotation rotation     0 1 0 0
+  field SFString   contactMaterial  "metal"
+  field SFString   name         "Marble"
+]
+{
+  Solid {
+    translation IS translation
+    rotation IS rotation
+    children [
+      DEF marble Shape {
+        appearance PBRAppearance {
+        }
+        geometry Sphere {
+          radius 0.0045
+        }
+      }
+    ]
+    contactMaterial IS contactMaterial
+    boundingObject USE marble
+    physics Physics {
+      density 100000
+    }
+    name IS name
+    model "mona esp Marble"
+  }
+}

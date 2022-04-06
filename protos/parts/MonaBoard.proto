@@ -1,0 +1,34 @@
+#VRML_SIM R2021a utf8
+# license: Copyright Cyberbotics Ltd. Licensed for use only with Webots.
+# license url: https://cyberbotics.com/webots_assets_license
+# Board of the mona esp mobile robot.
+
+PROTO MonaBoard [
+  field SFVec3f    translation  0 0 0
+  field SFRotation rotation     0 1 0 0
+]
+{
+  Transform {
+    translation IS translation
+    rotation IS rotation
+    children [
+      Shape {
+        appearance PBRAppearance {
+          baseColorMap ImageTexture {
+            url [
+              "../textures/MONA_ESP_Board.png"
+            ]
+            repeatS FALSE
+            repeatT FALSE
+            filtering 1
+          }
+          metalness 0.6
+          emissiveIntensity 0
+        }
+        geometry Plane {
+          size 0.081 0.081
+        }
+      }
+    ]
+  }
+}

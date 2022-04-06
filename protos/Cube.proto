@@ -1,0 +1,34 @@
+#VRML_SIM R2021a utf8
+# license: Copyright Cyberbotics Ltd. Licensed for use only with Webots.
+# license url: https://cyberbotics.com/webots_assets_license
+# Cube
+
+PROTO Cube [
+  field SFVec3f    translation  0 0 0
+  field SFRotation rotation     0 1 0 0
+  field SFVec3f    scale        1 1 1
+  field SFColor    color        1 1 1
+  field SFString   name         "Cube"
+]
+{
+  Solid {
+    translation IS translation
+    rotation IS rotation
+    scale IS scale
+    children [
+      DEF Box Shape {
+        appearance PBRAppearance {
+          baseColor IS color
+          metalness 0.1
+        }
+        geometry Box {
+          size 1 1 1
+        }
+      }
+    ]
+    boundingObject USE Box
+    physics Physics {}
+    name IS name
+    model "Cube"
+  }
+}

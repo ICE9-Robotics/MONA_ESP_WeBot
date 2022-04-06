@@ -1,0 +1,47 @@
+#VRML_SIM R2021a utf8
+# license: Copyright Cyberbotics Ltd. Licensed for use only with Webots.
+# license url: https://cyberbotics.com/webots_assets_license
+# sensor belt of the mona esp mobile robot.
+
+PROTO MonaSensorBelt [
+  field SFVec3f     translation                 0 0 0
+  field SFRotation  rotation                    0 1 0 0
+  field SFInt32     distanceSensorNumberOfRays  1
+]
+{
+  Transform {
+    translation IS translation
+    rotation IS rotation
+    children [
+      MonaDistanceSensor {
+        translation 0.014 0 -0.035
+        rotation 4.15416e-07 -1 8.74588e-07 -1.1737153071795863
+        numberOfRays IS distanceSensorNumberOfRays
+        name "IR1"
+      }
+      MonaDistanceSensor {
+        translation 0.032 0 -0.021
+        rotation -0.021830206506280085 0.9995232978981681 -0.02183160650669734 0.648919
+        numberOfRays IS distanceSensorNumberOfRays
+        name "IR2"
+      }
+      MonaDistanceSensor {
+        translation 0.039 0 0
+        numberOfRays IS distanceSensorNumberOfRays
+        name "IR3"
+      }
+      MonaDistanceSensor {
+        translation 0.032 0 0.022
+        rotation -1.3441e-06 1 -1.04265e-06 -0.6544953071795865
+        numberOfRays IS distanceSensorNumberOfRays
+        name "IR4"
+      }
+      MonaDistanceSensor {
+        translation 0.014 0 0.036
+        rotation -2.470869999992371e-06 0.9999999999969125 -2.649689999991819e-07 -1.1781053071795862
+        numberOfRays IS distanceSensorNumberOfRays
+        name "IR5"
+      }
+    ]
+  }
+}

@@ -1,0 +1,111 @@
+#VRML_SIM R2021a utf8
+# license: Copyright Cyberbotics Ltd. Licensed for use only with Webots.
+# license url: https://cyberbotics.com/webots_assets_license
+# The mona esp mobile robot.
+
+PROTO Mona [
+  field SFVec3f             translation                   0 0.022 0                 # Is `Transform.translation`.
+  field SFRotation          rotation                      0 1 0 0                   # Is `Transform.rotation`.
+  field SFString            name                          "Mona"                    # Is `Robot.name`.
+  field SFString            controller                    "mona_controller"         # Is `Robot.controller`.
+  field MFString            controllerArgs                []                        # Is `Robot.controllerArgs`.
+  field SFString            customData                    ""                        # Is `Robot.customData`.
+  field SFBool              supervisor                    FALSE                     # Is `Robot.supervisor`.
+  field SFBool              synchronization               TRUE                      # Is `Robot.synchronization`.
+  field SFInt32             distanceSensorNumberOfRays    1                         # Is `DistanceSensor.numberOfRays`.
+  field SFInt32             WifiBaseIP                    1                         # Is `Emitter.channel`.
+  field SFInt32             WifiRobotIP                   1                         # Is `Receiver.channel`.
+  field MFFloat             battery                       [15420, 15420, 5312500]   # Is `Robot.battery`.
+  field SFFloat             cpuConsumption                0.4                       # Is `Robot.cpuConsumption`.
+  field SFString            window                        ""                        # Is `Robot.window`.
+  field SFBool              helmetWeared                  FALSE                     
+]
+{
+%{
+  local hasHelmet = fields.helmetWeared.value
+}%
+  Robot {
+    translation IS translation
+    rotation IS rotation
+    children [
+      DEF Body MonaBoardShape {}
+      MonaLED {
+        translation 0.004 0 -0.034
+        name "RGB1"
+      }
+      MonaLED {
+        translation 0.004 0 0.034
+        name "RGB2"
+      }
+      MonaWifi {
+        translation -0.023 0 0
+        emitterChannel IS WifiBaseIP
+        receiverChannel IS WifiRobotIP
+      }
+      MonaIMU {
+        translation -0.0205 0.001 0
+      }
+      MonaSensorBelt {
+        translation 0 -0.005 0
+        distanceSensorNumberOfRays IS distanceSensorNumberOfRays
+      }
+      MonaFrontGroup {
+        translation 0.036 0 0
+      }
+      Solid {
+        translation 0 0 0.001
+        children [
+          DEF Body MonaBoardShape {}
+          MonaBoard {
+            translation 0 0.0001 0
+            rotation 0 1 0 -1.57
+          }
+        ]
+      }
+      %{ if hasHelmet then }%
+      MonaHelmet {
+        translation 0 -0.002 0
+        rotation 0 1 0 -1.57
+      }
+      %{ end }%
+      MonaShaft {
+        translation -0.018 -0.008 0
+        rotation 1 0 0 1.57
+      }
+      MonaMotorCase {
+        translation -0.018 -0.009 0.001
+      }
+      MonaMotor {
+        position -0.018 -0.008 -0.039
+        axis                 0 0 1
+        positionSensorName   "pos_sensor_L"
+        rotationalMotorName  "wheel_L"
+        whellRotation 0 -1 0 3.14
+      }
+      MonaMotor {
+        position -0.018 -0.008 0.039
+        axis                 0 0 1
+        positionSensorName   "pos_sensor_R"
+        rotationalMotorName  "wheel_R"
+        whellRotation 0 0 1 0
+      }
+    ]
+    name IS name
+    model "mona esp"
+    boundingObject USE Body
+    physics Physics {
+      mass 0.085
+      centerOfMass [
+        0 0.01 0.01
+      ]
+    }
+    controller IS controller
+    controllerArgs IS controllerArgs
+    customData IS customData
+    supervisor IS supervisor
+    synchronization IS synchronization
+    battery IS battery
+    cpuConsumption IS cpuConsumption
+    window IS window
+  }
+}

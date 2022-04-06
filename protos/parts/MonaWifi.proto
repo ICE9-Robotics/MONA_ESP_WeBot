@@ -1,0 +1,40 @@
+#VRML_SIM R2021a utf8
+# license: Copyright Cyberbotics Ltd. Licensed for use only with Webots.
+# license url: https://cyberbotics.com/webots_assets_license
+# Wifi chip of the mona esp mobile robot.
+
+PROTO MonaWifi [
+  field SFVec3f     translation       0 0 0
+  field SFRotation  rotation          0 1 0 0
+  field SFInt32     emitterChannel    0
+  field SFInt32     receiverChannel   0
+]
+{
+  Transform {
+    translation IS translation
+    rotation IS rotation
+    children [
+      Receiver {
+        translation 0 0 0
+        name "Wifi-receiver"
+        type "radio"
+        channel IS receiverChannel
+      }
+      Emitter {
+        translation 0 0 0
+        name "Wifi-emitter"
+        type "radio"
+        channel IS emitterChannel
+      }
+      DEF WifiChip Shape {
+        appearance PBRAppearance {
+          baseColor 0.1 0.1 0.1
+          metalness 0.1
+        }
+        geometry Box {
+          size 0.031 0.001 0.018
+        }
+      }
+    ]
+  }
+}
