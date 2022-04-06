@@ -1,5 +1,5 @@
 # MONA_ESP_WeBot
-WeBot simulation of the ESP MONA robotic platform
+WeBot simulation of the ESP MONA robotic platform. A big thank you to [Dorian Lévêque](https://github.com/dorianleveque) for developing the inital simulation as part of an internship!!! 
 
 The `protos` folder contains the Mona prototype, for the 2021 version of WeBot. Unfortunately in the 2022 version coordinate system changed and the prototype needs chaging to take this into account.
 
