@@ -1,0 +1,11 @@
+Webots Proto Cache File version 1.5
+protoFileHash: e49f006c3cc7977255aad9c3337464d7
+needsRobotAncestor: 1
+baseType: Transform
+slotType: 
+parameters: translation,rotation,emitterChannel,receiverChannel
+tags: 
+license:  Copyright Cyberbotics Ltd. Licensed for use only with Webots.
+licenseUrl:  https://cyberbotics.com/webots_assets_license
+documentationUrl: 
+info: Wifi\schip\sof\sthe\smona\sesp\smobile\srobot.\n

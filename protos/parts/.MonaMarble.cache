@@ -1,0 +1,11 @@
+Webots Proto Cache File version 1.5
+protoFileHash: 1d6510bbf8e3d985f24d02d38a95d3fb
+needsRobotAncestor: 0
+baseType: Solid
+slotType: 
+parameters: translation,rotation,contactMaterial,name
+tags: 
+license:  Copyright Cyberbotics Ltd. Licensed for use only with Webots.
+licenseUrl:  https://cyberbotics.com/webots_assets_license
+documentationUrl: 
+info: Marble\sof\sthe\smona\sesp\smobile\srobot.\n
